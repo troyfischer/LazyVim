@@ -1,4 +1,5 @@
 return {
+
   "mfussenegger/nvim-dap",
 
   dependencies = {
@@ -10,6 +11,24 @@ return {
       keys = {
         { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
         { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+        { "<leader>dwr", function() require("dapui").elements.watches.remove() end, desc = "Remove watch", mode = {"n", "v"} },
+        { "<leader>dwc", function()
+          local watches = require("dapui").elements.watches
+          local watch_list = watches.get()
+          for i, _ in ipairs(watch_list) do
+            watches.remove(i)
+          end
+        end, desc = "Clear watches", mode = {"n", "v"} },
+        { "<leader>dwa", function()
+            local modeInfo = vim.api.nvim_get_mode()
+            local mode = modeInfo.mode
+            local watches = require("dapui").elements.watches
+            if mode == "n" then
+                watches.add(vim.fn.input("Watch: "))
+            else
+                watches.add()
+            end
+        end, desc = "Add Watch", mode = {"n", "v"} },
       },
       opts = {},
       config = function(_, opts)
@@ -44,6 +63,7 @@ return {
         defaults = {
           ["<leader>d"] = { name = "+debug" },
           ["<leader>da"] = { name = "+adapters" },
+          ["<leader>dw"] = { name = "+watches" },
         },
       },
     },
@@ -73,8 +93,8 @@ return {
 
   -- stylua: ignore
   keys = {
-    { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
-    { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+    { "<leader>dT", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+    { "<leader>dt", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
     { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
     { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
     { "<leader>dg", function() require("dap").goto_() end, desc = "Go to line (no execute)" },
@@ -83,11 +103,11 @@ return {
     { "<leader>dk", function() require("dap").up() end, desc = "Up" },
     { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
     { "<leader>do", function() require("dap").step_out() end, desc = "Step Out" },
-    { "<leader>dO", function() require("dap").step_over() end, desc = "Step Over" },
+    { "<leader>dn", function() require("dap").step_over() end, desc = "Next" },
     { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
     { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
     { "<leader>ds", function() require("dap").session() end, desc = "Session" },
-    { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
+    { "<leader>dq", function() require("dap").terminate() end, desc = "Quit" },
     { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
   },
 

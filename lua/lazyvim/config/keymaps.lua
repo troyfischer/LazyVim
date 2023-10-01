@@ -19,17 +19,15 @@ end
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+-- Ctrl-g to escape
+map({ "i", "x", "n", "s", "o", "c" }, "<C-g>", "<Esc>")
 
--- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map({ "i", "x", "n", "s", "o", "c" }, "<C-j>", "<C-n>")
+map({ "i", "x", "n", "s", "o", "c" }, "<C-k>", "<C-p>")
+
+
+-- save file like a sane person
+map("n", "<leader>fs", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -149,10 +147,20 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>ws", "<C-W>s<cr><C-W>k", { desc = "Split window below", remap = true })
+map("n", "<leader>wS", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>wv", "<C-W>v<cr><C-W>h", { desc = "Split window right", remap = true })
+map("n", "<leader>wV", "<C-W>v", { desc = "Split window right", remap = true })
+-- Doom emacs window navigation
+map("n", "<leader>wh", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window", remap = true })
+-- resizing
+map("n", "<leader>w<C-k>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<leader>w<C-j>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<leader>w<C-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<leader>w<C-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
