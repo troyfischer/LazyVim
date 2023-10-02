@@ -12,11 +12,15 @@ return {
         end
       end)
     end,
+    format_on_save = {
+      timeout_ms = 5000,
+    },
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
         fish = { "fish_indent" },
         sh = { "shfmt" },
+        python = { "isort", "black" },
       },
       -- LazyVim will merge the options you set here with builtin formatters.
       -- You can also define any custom formatters here.
