@@ -49,7 +49,6 @@ else
   map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
   map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
