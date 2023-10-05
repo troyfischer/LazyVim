@@ -119,6 +119,10 @@ return {
       -- find
       { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 
+      -- previous / next buffers
+      { "<leader>bp", "<C-O>", desc = "Buffer Previous" },
+      { "<leader>bn", "<C-I>", desc = "Buffers Next" },
+
       { "<leader>pf", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>p.", Util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>pF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },

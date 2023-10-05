@@ -150,6 +150,10 @@ map("n", "<leader>ws", "<C-W>s<cr><C-W>k", { desc = "Split window below", remap 
 map("n", "<leader>wS", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wv", "<C-W>v<cr><C-W>h", { desc = "Split window right", remap = true })
 map("n", "<leader>wV", "<C-W>v", { desc = "Split window right", remap = true })
+
+-- maximize
+map("n", "<leader>wmm", "<C-W>_<cr><C-W>|", { desc = "Maximize window", remap = true })
+
 -- Doom emacs window navigation
 map("n", "<leader>wh", "<C-w>h", { desc = "Go to left window", remap = true })
 map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window", remap = true })
