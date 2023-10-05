@@ -1,5 +1,139 @@
 # Changelog
 
+## [9.0.2](https://github.com/LazyVim/LazyVim/compare/v9.0.1...v9.0.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* **autocmds:** last_loc autocmd didn't work correctly for first opened file ([0cc80b1](https://github.com/LazyVim/LazyVim/commit/0cc80b1b0594516ccc2c1e6c9a60c84012a29abb))
+* **bufferline:** load bufferline on VeryLazy. Fixes [#1587](https://github.com/LazyVim/LazyVim/issues/1587) ([7272b3e](https://github.com/LazyVim/LazyVim/commit/7272b3e4b5b626597658dabf774998057892d066))
+* **treesitter:** dont enable ]c, [c, ... in diff-mode ([86de423](https://github.com/LazyVim/LazyVim/commit/86de423ef029abd085531e18b197a5f90e201d98))
+
+## [9.0.1](https://github.com/LazyVim/LazyVim/compare/v9.0.0...v9.0.1) (2023-10-04)
+
+
+### Bug Fixes
+
+* **alpha:** use `&lt;cmd&gt;` instead of `:` for shortcuts ([1abcffb](https://github.com/LazyVim/LazyVim/commit/1abcffbfd940588fa67cc7438ce2115df1c58e92))
+* **options:** only enable treesitter `foldexpr` on nightly. Fixes [#1581](https://github.com/LazyVim/LazyVim/issues/1581) ([d989ecc](https://github.com/LazyVim/LazyVim/commit/d989ecc943b3240db0be3aa0369b96089cee4b40))
+* **ui:** show global marks in the correct buffer only ([3849e01](https://github.com/LazyVim/LazyVim/commit/3849e0150b0a616dbd6e7e12ec5025aff6c81d39))
+
+## [9.0.0](https://github.com/LazyVim/LazyVim/compare/v8.4.4...v9.0.0) (2023-10-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **mini.surround:** default surround mappings are now gs instead of gz (unless you enabled the leap extra)
+
+### Features
+
+* **extras:** added extra for dashboard.nvim ([417de01](https://github.com/LazyVim/LazyVim/commit/417de0193dd0663100a8b1eaedc2bc4976712c61))
+* **mini.surround:** default surround mappings are now gs instead of gz (unless you enabled the leap extra) ([d28c69e](https://github.com/LazyVim/LazyVim/commit/d28c69e49eab62b45f7d1562b3bc00afee5fbb65))
+* **treesitter:** added ]f, [f, ]F, [F, ]c, ]C, [c, [C for treesitter-textobjects ([0e66ef8](https://github.com/LazyVim/LazyVim/commit/0e66ef83934eb62ee2237e331dcbc0a22b809aae))
+* **treesitter:** map `vim` to `[@namespace](https://github.com/namespace).builtin` ([5f0713d](https://github.com/LazyVim/LazyVim/commit/5f0713d2b612a814586bffec39700ab6a30dc0ea))
+* **typescript:** add typescriptreact/javascriptreact to types ([#1574](https://github.com/LazyVim/LazyVim/issues/1574)) ([626ae13](https://github.com/LazyVim/LazyVim/commit/626ae1338a88f6cd8962d6c20bd79953a67f0b72))
+* **ui:** show alpha marks in statuscolumn ([bd2ac54](https://github.com/LazyVim/LazyVim/commit/bd2ac542a0bb4c58237cd6ca8848063bd20a5282))
+
+
+### Bug Fixes
+
+* **autocmds:** retore last location for correct buffer ([afc8e7f](https://github.com/LazyVim/LazyVim/commit/afc8e7f8cac06335efd12ec5f71cabb1f38a09b0))
+* **conform:** dont try merging function formatters. Fixes [#1582](https://github.com/LazyVim/LazyVim/issues/1582) ([f475085](https://github.com/LazyVim/LazyVim/commit/f4750859f2c2c9a41b3974ac05962ce9648d6c16))
+* **conform:** dont try to merge formatter functions ([9f034ab](https://github.com/LazyVim/LazyVim/commit/9f034ab10650e306e178d5189ee9214a52f2e8e5))
+* **nvim-lint:** dont try merging function linters ([79010ae](https://github.com/LazyVim/LazyVim/commit/79010ae671035d8ed0040ce51df4fb59ec3962f8))
+* **ui:** use custom fold when treesitter foldtext returns a string ([3505329](https://github.com/LazyVim/LazyVim/commit/35053290bf957a230c8758d31ba3997c0699f5f9))
+
+
+### Performance Improvements
+
+* added support for `LazyFile` event that properly loads file based plugins without blocking the ui ([936d74b](https://github.com/LazyVim/LazyVim/commit/936d74bb6127721eeefa62e5f697d9693ab04fdd))
+* **config:** add LazyVim to the rtp early for faster spec loading ([2f16a7b](https://github.com/LazyVim/LazyVim/commit/2f16a7b2d96e912c9ab50ce99d9994413ff3678d))
+
+## [8.4.4](https://github.com/LazyVim/LazyVim/compare/v8.4.3...v8.4.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* **ui:** work-around for telescope issue with treesitter folds ([ccff868](https://github.com/LazyVim/LazyVim/commit/ccff8683ba957250d71ef66429fc877f0ee5cedb))
+
+## [8.4.3](https://github.com/LazyVim/LazyVim/compare/v8.4.2...v8.4.3) (2023-10-03)
+
+
+### Bug Fixes
+
+* **ui:** always pad to 2 cells for status column icons. Fixes [#1571](https://github.com/LazyVim/LazyVim/issues/1571) ([6cf6b0a](https://github.com/LazyVim/LazyVim/commit/6cf6b0a6241c659113f5646ff64fba7dbf5161b9))
+
+## [8.4.2](https://github.com/LazyVim/LazyVim/compare/v8.4.1...v8.4.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* **nvim-lint:** dont evaluate conditions for linter functions. Fixes [#1569](https://github.com/LazyVim/LazyVim/issues/1569) ([b1ad480](https://github.com/LazyVim/LazyVim/commit/b1ad48067e2c18747bedd7b7054c3ce97ef32890))
+* **ui:** fixed foldtext on Neovim &lt; 0.10 ([1b74d67](https://github.com/LazyVim/LazyVim/commit/1b74d67a0d5783e587dedc73a715cb0c9db6cd16))
+
+
+### Performance Improvements
+
+* **options:** better detection for foldtext,statuscolumn,folexpr support ([e105c9d](https://github.com/LazyVim/LazyVim/commit/e105c9daf6e973b4a294a17b4d2d1882f2188ac6))
+
+## [8.4.1](https://github.com/LazyVim/LazyVim/compare/v8.4.0...v8.4.1) (2023-10-03)
+
+
+### Bug Fixes
+
+* **ui:** check folds of the statuscolumn win instead of current win ([13e9f6e](https://github.com/LazyVim/LazyVim/commit/13e9f6e6b5b085191b0ecf194ddf4c9e2d3ae6d7))
+
+## [8.4.0](https://github.com/LazyVim/LazyVim/compare/v8.3.0...v8.4.0) (2023-10-03)
+
+
+### Features
+
+* **keymaps:** added toggle for relative line numbers ([3f868aa](https://github.com/LazyVim/LazyVim/commit/3f868aa8254efbd494f6bf100c86a59c5a002c1c))
+* **options:** enable smoothscroll on nightly ([450e0c6](https://github.com/LazyVim/LazyVim/commit/450e0c6bebc5bb9a0c513cdffaf9c46d5f62d5fa))
+* **options:** enabled treesitter folding and foldtext when available ([19926d2](https://github.com/LazyVim/LazyVim/commit/19926d284862b5e58f29e73b71ec532ac29c54ba))
+* **ui:** fancy fold text ([f1ce075](https://github.com/LazyVim/LazyVim/commit/f1ce07510d2048e33fec2b609814d68a7175d591))
+* **ui:** fancy status column ([364bcf3](https://github.com/LazyVim/LazyVim/commit/364bcf325d91a06e6bd6516bdfed84399566cdb6))
+
+
+### Bug Fixes
+
+* **ui:** better fallback for foldtext when buffer does not have TreeSitter ([762017d](https://github.com/LazyVim/LazyVim/commit/762017dc35fc961bdcc7879a5527dbccced27792))
+* **ui:** Neovim &lt; 0.10 ([afbe204](https://github.com/LazyVim/LazyVim/commit/afbe2043a73b6c90476812f9cc0ca4759814e5ac))
+
+## [8.3.0](https://github.com/LazyVim/LazyVim/compare/v8.2.0...v8.3.0) (2023-10-02)
+
+
+### Features
+
+* **conform:** added new keymap (leader-cF) to format injected languages ([86d3694](https://github.com/LazyVim/LazyVim/commit/86d36946727bade57918c6a358c6b6bae52d441b))
+
+
+### Bug Fixes
+
+* **indent-blankline:** set `config.indent.tab_char` ([#1552](https://github.com/LazyVim/LazyVim/issues/1552)) ([7c5a458](https://github.com/LazyVim/LazyVim/commit/7c5a458761fe7002c6603d602e8d130b9a62dd68))
+
+## [8.2.0](https://github.com/LazyVim/LazyVim/compare/v8.1.0...v8.2.0) (2023-10-02)
+
+
+### Features
+
+* **mini.files:** added lsp rename support to mini.files ([4ff51cd](https://github.com/LazyVim/LazyVim/commit/4ff51cd678343ea32668eaf0c1103caacb4334a2))
+
+## [8.1.0](https://github.com/LazyVim/LazyVim/compare/v8.0.0...v8.1.0) (2023-10-01)
+
+
+### Features
+
+* **conform:** set vim.opt.formatexpr ([766d5e5](https://github.com/LazyVim/LazyVim/commit/766d5e5bf7a8e40910a00aef4dc30f36376e5652))
+* **elixir:** Add credo if none-ls is used ([#1546](https://github.com/LazyVim/LazyVim/issues/1546)) ([2ffd629](https://github.com/LazyVim/LazyVim/commit/2ffd629cc7a68e6e4a721ac8babe6b7cf612868e))
+* **format:** show warning when no formatter ran when using the format keymap ([e36f7d8](https://github.com/LazyVim/LazyVim/commit/e36f7d811c396b60bcbf65f962b3f52d2f75b0b3))
+* **go:** add goimports ([#1549](https://github.com/LazyVim/LazyVim/issues/1549)) ([e8ab2ff](https://github.com/LazyVim/LazyVim/commit/e8ab2ff5b6a75952943d3ba44586c7de5588be33))
+
+
+### Bug Fixes
+
+* **format:** moved formatting keymap to lua/lazyvim/config/keymaps.lua ([9b16770](https://github.com/LazyVim/LazyVim/commit/9b1677057377400ab292c51bbc085c82637a39d4))
+
 ## [8.0.0](https://github.com/LazyVim/LazyVim/compare/v7.0.3...v8.0.0) (2023-10-01)
 
 

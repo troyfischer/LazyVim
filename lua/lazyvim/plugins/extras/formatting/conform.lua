@@ -4,7 +4,18 @@ return {
     dependencies = { "mason.nvim" },
     lazy = true,
     cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>cF",
+        function()
+          require("conform").format({ formatters = { "injected" } })
+        end,
+        mode = { "n", "v" },
+        desc = "Format Injected Langs",
+      },
+    },
     init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
       -- Install the conform formatter on VeryLazy
       require("lazyvim.util").on_very_lazy(function()
         require("lazyvim.plugins.lsp.format").custom_format = function(buf)
@@ -36,9 +47,13 @@ return {
     },
     config = function(_, opts)
       opts.formatters = opts.formatters or {}
-      for f, o in pairs(opts.formatters) do
-        local ok, formatter = pcall(require, "conform.formatters." .. f)
-        opts.formatters[f] = vim.tbl_deep_extend("force", {}, ok and formatter or {}, o)
+      for name, formatter in pairs(opts.formatters) do
+        if type(formatter) == "table" then
+          local ok, defaults = pcall(require, "conform.formatters." .. name)
+          if ok and type(defaults) == "table" then
+            opts.formatters[name] = vim.tbl_deep_extend("force", {}, defaults, formatter)
+          end
+        end
       end
       require("conform").setup(opts)
     end,

@@ -59,23 +59,12 @@ return {
       },
     },
     config = function(_, opts)
-      opts.event_handlers = opts.event_handlers or {}
-
       local function on_move(data)
-        local clients = vim.lsp.get_active_clients()
-        for _, client in ipairs(clients) do
-          if client:supports_method("workspace/willRenameFiles") then
-            local resp = client.request_sync("workspace/willRenameFiles", {
-              files = { { oldUri = vim.uri_from_fname(data.source), newUri = vim.uri_from_fname(data.destination) } },
-            }, 1000)
-            if resp and resp.result ~= nil then
-              vim.lsp.util.apply_workspace_edit(resp.result, client.offset_encoding)
-            end
-          end
-        end
+        Util.on_rename(data.source, data.destination)
       end
 
       local events = require("neo-tree.events")
+      opts.event_handlers = opts.event_handlers or {}
       vim.list_extend(opts.event_handlers, {
         { event = events.FILE_MOVED, handler = on_move },
         { event = events.FILE_RENAMED, handler = on_move },
@@ -330,7 +319,7 @@ return {
   -- hunks in a commit.
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -369,7 +358,7 @@ return {
   -- instances.
   {
     "RRethy/vim-illuminate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -460,7 +449,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     config = true,
     -- stylua: ignore
     keys = {
